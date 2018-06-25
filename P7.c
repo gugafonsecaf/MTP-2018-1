@@ -2,18 +2,31 @@
 //11721EAU002
 #include <stdio.h>
 
-int ackerman(int, int);
-int main()
-{	int m, n;
-	printf("Digite os valores para m e n, respectivamente: ");
-	scanf("%d %d", &m, &n);
-
-	printf("Saida = %d ", ackerman(m, n));
-	return 0;
-}
-int ackerman(int m, int n)
-{	if(m==0){	return n + 1;	}
-	else if(m > 0 && n==0) {	ackerman(m-1, 1);	}
-	else if(m > 0 && n > 0) {	ackerman(m - 1, ackerman(m, n - 1));
+int funcao(int m, int n)
+{
+	int i;
+	if(m == 0)
+	{
+		return n+1;
+    }
+    else if(m >0 && n == 0)
+    {
+    	return funcao(m-1, 1);
 	}
+	else if(m > 0 && n > 0)
+	{
+		return funcao(m-1, funcao(m, n-1));
+	}	
+}
+int main()
+{
+	int m, n;
+	printf("Digite o valor de m: ");
+	scanf("%d", &m);
+	getchar();
+	printf("Digite o valor de n: ");
+	scanf("%d", &n);
+	getchar();
+    printf("\n\nResultado da funcao: %d", funcao(m,n));
+    return 0;
 }
